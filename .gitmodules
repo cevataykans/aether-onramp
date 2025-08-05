@@ -24,7 +24,7 @@
 	branch = main
 [submodule "deps/ueransim"]
 	path = deps/ueransim
-	url = https://github.com/opennetworkinglab/aether-ueransim.git
+	url = https://github.com/cevataykans/aether-ueransim.git
 	branch = main
 [submodule "deps/srsran"]
 	path = deps/srsran
