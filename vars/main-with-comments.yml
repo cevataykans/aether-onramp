@@ -12,19 +12,20 @@ k8s:
     version: v3.17.0
 
 core:
-  standalone: true
+  standalone: true			# set to false to place under control of ROC
   data_iface: enp86s0
   values_file: "deps/5gc/roles/core/templates/sdcore-5g-values.yaml"
-  ran_subnet: ""
+  ran_subnet: ""		# set to empty string to get subnet from 'data_iface'
   helm:
-    local_charts: false
+    local_charts: false			# set chart_ref to local path name if true
     chart_ref: aether/sd-core
-    chart_version: 1.1.0
+    chart_version: 1.1.0 # we use 1.1.0 for tracing http between NFs, new versions use gRPC between NFs.
+    # Use 2.2.8 for gRPC.
   upf:
-    access_subnet: "192.168.202.1/24"
-    core_subnet: "192.168.200.1/24"
-    mode: af_packet
-    multihop_gnb: false
+    access_subnet: "192.168.202.1/24"	# access subnet & gateway
+    core_subnet: "192.168.200.1/24"	# core subnet & gateway
+    mode: af_packet			# Options: af_packet or dpdk
+    multihop_gnb: false			# set to true to override default N3 subnet
     default_upf:
       ip:
         access: "192.168.202.3"
@@ -33,6 +34,7 @@ core:
   amf:
     ip: "131.159.25.36"
 
+# TODO: fix? does not work... use ueransim!
 gnbsim:
   docker:
     container:
@@ -56,7 +58,7 @@ gnbsim:
 
 ueransim:
   gnb:
-    ip: "131.159.25.35"
+    ip: "131.159.25.35" # IP of the node where ueransim is going to be installed.
   servers:
     0:
       gnb: "deps/ueransim/config/custom-gnb.yaml"
