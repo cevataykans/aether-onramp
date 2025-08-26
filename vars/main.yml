@@ -40,13 +40,12 @@ gnbsim:
       prefix: gnbsim
       count: 2
     network:
-      ipvlan:
+      macvlan:
         name: gnbnet
 
   router:
     data_iface: enp86s0
-    ipvlan:
-      iface: gnbaccess
+    macvlan:
       subnet_prefix: "172.20"
 
   servers:
