@@ -19,7 +19,7 @@ core:
   helm:
     local_charts: false			# set chart_ref to local path name if true
     chart_ref: aether/sd-core
-    chart_version: 1.1.0 # we use 1.1.0 for tracing http between NFs, new versions use gRPC between NFs.
+    chart_version: 3.0.0 # we use 1.1.0 for tracing http between NFs, new versions use gRPC between NFs.
     # Use 2.2.8 for gRPC.
   upf:
     access_subnet: "192.168.202.1/24"	# access subnet & gateway
@@ -37,7 +37,7 @@ core:
 gnbsim:
   docker:
     container:
-      image: omecproject/5gc-gnbsim:rel-1.6.2
+      image: omecproject/5gc-gnbsim:rel-1.6.3
       prefix: gnbsim
       count: 1
     network:
@@ -70,7 +70,7 @@ amp:
     helm:
       local_charts: false
       chart_ref: aether/aether-roc-umbrella
-      chart_version: 2.1.36
+      chart_version: 2.1.37
 
   atomix:
     helm:
